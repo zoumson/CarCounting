@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 2.8.9)
 
 #set the project name
-project (digits)
+project (blob)
 
 #Set the compiler
 set(CMAKE_CXX_STANDARD 17)
@@ -27,13 +27,5 @@ find_package(OpenCV  REQUIRED)
 include_directories(${PROJECT_SOURCE_DIR}/include)
 
 #Bring the source files
-#add_subdirectory(${PROJECT_SOURCE_DIR}/src/lib)
-#add_subdirectory(${PROJECT_SOURCE_DIR}/src/demo)
-#Bring the sources
-file(GLOB SOURCES_DEMO ${PROJECT_SOURCE_DIR}/src/*.cpp)
-
-#Build the executable
-add_executable(demo ${SOURCES_DEMO})
-
-#Link the libraries 
-target_link_libraries(demo  ${OpenCV_LIBS})
+add_subdirectory(${PROJECT_SOURCE_DIR}/src/lib)
+add_subdirectory(${PROJECT_SOURCE_DIR}/src/demo)

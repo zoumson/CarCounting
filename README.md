@@ -12,8 +12,8 @@
 [![Stack Overflow][stackoverflow-shield]][stackoverflow.com/users/11175375/adam]
 [![Leetcode][leetcode-shield]][eetcode.com/Hard_Code/]
 -->
-## Digits Classification model trainning 
-![mn](https://user-images.githubusercontent.com/38358621/122679991-beb0a980-d21f-11eb-958e-bd029d98fb0e.png)
+## Mouse Next Position Prediction 
+![mouse](https://user-images.githubusercontent.com/38358621/122943458-9fde1e80-d3a9-11eb-8de8-6e91af8ae3fe.png)
 <!-- TABLE OF CONTENTS -->
 <details open="open">
   <summary>Table of Contents</summary>
@@ -51,16 +51,8 @@
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
 <!-- [![Product Name Screen Shot][product-screenshot]](https://example.com) -->
-
-The MNIST dataset is an acronym that stands for the Modified National Institute of Standards and Technology dataset.
-
-It is a dataset of 60,000 small square 28×28 pixel grayscale images of handwritten single digits between 0 and 9.
-
-The task is to classify a given image of a handwritten digit into one of 10 classes representing integer values from 0 to 9, inclusively.
-
-It is a widely used and deeply understood dataset and, for the most part, is “solved.” Top-performing models are deep learning convolutional neural networks that achieve a classification accuracy of above 99%, with an error rate between 0.4 %and 0.2% on the hold out test dataset.
+Mouse cursor position prediction.
 <!--Built with -->
 ### Built With
 
@@ -68,7 +60,6 @@ It is a widely used and deeply understood dataset and, for the most part, is “
 
 * [opencv](https://opencv.org/)
 * [cmake](https://cmake.org/)
-* [conan](https://conan.io/)
 
 <br>
 
@@ -82,39 +73,30 @@ It is a widely used and deeply understood dataset and, for the most part, is “
 
 ### Entire Files Structure 
 
-
 ```
 .
 ├── CMakeLists.txt
 ├── include
-│   ├── ConstantsSVM.h
-│   ├── Hog.h
-│   ├── Preprocess.h
-│   └── SVM.h
+│   ├── ConstantsMouse.h
+│   └── Mouse.h
 ├── README.md
-├── resource
-│   └── image
-│       └── digits.png
 └── src
     ├── demo
     │   ├── CMakeLists.txt
     │   └── demo.cpp
     └── lib
         ├── CMakeLists.txt
-        └── modelSVM
-            ├── Hog.cpp
-            ├── Preprocess.cpp
-            └── SVM.cpp
+        └── mouse
+            └── Mouse.cpp
 
-7 directories, 13 files
-
+5 directories, 8 files
 ```
 
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is a sample code of how you may use  the opencv libs to train a model for classifying a digit.
+This is a sample code of how you may use  the opencv libs to predict mouse position.
 To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
@@ -124,10 +106,6 @@ This is an example of how to list things you need to use the software and how to
   ```sh
   sudo apt-get install cmake
   ```
-* conan 
-```sh
-sudo pip install conan
-```
 
  * opencv4
  ```sh
@@ -141,15 +119,15 @@ git clone https://github.com/zoumson/OpencvInstall.git     \
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/zoumson/DigitsClassification.git
+   git clone https://github.com/zoumson/TrackMousePosition.git
    ```
 2. Go to the project directory source
    ```sh
-   cd DigitsClassification
+   cd TrackMousePosition
    ```
 3. Create empty directories 
    ```sh
-   mkdir build &&  mkdir bin && mkdir result && mkdir lib
+   mkdir build &&  mkdir bin && mkdir lib
    ```
 5. Generate the exectutable and move it to `bin`
    ```sh
@@ -158,36 +136,61 @@ git clone https://github.com/zoumson/OpencvInstall.git     \
 
 <!-- USAGE EXAMPLES -->
 ### Usage
-1. Command line arguments
-```sh
-Digits Classification
-Usage: demo [params] 
 
-	-?, -h, --help, --usage (value:true)
-		show help message
-	-i, --image (value:<none>)
-		image path
-	-s, --save (value:./result/eyeGlassClassifierModel.yml)
-		save train file name
-```
-2. Run for the MNIST image 
+2. Run the executable 
  ```sh
-   ./bin/demo -i=./resource/image/digits.png
+   ./bin/demo 
 ```
 3. Output
 ```sh
-Image Count : 5000
-Descriptor Size : 144
-Kernel type     : 2
-Type            : 100
-C               : 12.5
-Degree          : 0
-Nu              : 0
-Gamma           : 0.5
-the accuracy is :98.4
+current position        = (521, 470)
+next predicted position = (609, 450)
+--------------------------------------------------
+current position        = (591, 412)
+next predicted position = (672, 372)
+--------------------------------------------------
+current position        = (609, 354)
+next predicted position = (663, 303)
+--------------------------------------------------
+current position        = (589, 300)
+next predicted position = (610, 245)
+--------------------------------------------------
+current position        = (551, 280)
+next predicted position = (540, 238)
+--------------------------------------------------
+current position        = (441, 252)
+next predicted position = (383, 218)
+--------------------------------------------------
+current position        = (311, 248)
+next predicted position = (216, 229)
+--------------------------------------------------
+current position        = (179, 264)
+next predicted position = (61, 262)
+--------------------------------------------------
+current position        = (123, 286)
+next predicted position = (24, 296)
+--------------------------------------------------
+current position        = (55, 340)
+next predicted position = (-28, 371)
+--------------------------------------------------
+current position        = (35, 402)
+next predicted position = (-18, 449)
+--------------------------------------------------
+current position        = (61, 462)
+next predicted position = (46, 518)
+--------------------------------------------------
+current position        = (97, 484)
+next predicted position = (108, 529)
+--------------------------------------------------
 ```
-4. Model saved at result folder as `eyeGlassClassifierModel.yml`, name could be set at command line
-5. Back to the initial file structure configuration
+4. Screen saved for `current position = (97, 484)` and `next predicted position = (108, 529)`
+   ```sh
+   White ===> Current mouse position
+   Red ===> Next predicted mouse position
+   ```
+
+![Screen](https://user-images.githubusercontent.com/38358621/122940820-65738200-d3a7-11eb-85bf-a4184efcb06d.png)
+6. Back to the initial file structure configuration
    ```sh
    rm -r bin build result lib 
    ```
@@ -221,7 +224,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 Adama Zouma - <!-- [@your_twitter](https://twitter.com/your_username) -->- stargue49@gmail.com
 
-Project Link: [https://github.com/zoumson/DigitsClassification](https://github.com/zoumson/DigitsClassification.git)
+Project Link: [https://github.com/zoumson/TrackMousePosition](https://github.com/zoumson/TrackMousePosition.git)
 
 
 

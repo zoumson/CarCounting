@@ -6,11 +6,23 @@
 #include<opencv2/core/core.hpp>
 #include<opencv2/highgui/highgui.hpp>
 #include<opencv2/imgproc/imgproc.hpp>
+#include <iostream>
 
-///////////////////////////////////////////////////////////////////////////////////////////////////
-class Blob {
+/**
+ * Implementation of a Class Blob
+ *
+ *
+ */
+namespace za {
+class Blob 
+{
+
 public:
-    // member variables ///////////////////////////////////////////////////////////////////////////
+    /* ============================================================================
+    * Data Memeber Declaration
+    * ============================================================================
+    */
+       
     std::vector<cv::Point> currentContour;
 
     cv::Rect currentBoundingRect;
@@ -27,12 +39,16 @@ public:
     int intNumOfConsecutiveFramesWithoutAMatch;
 
     cv::Point predictedNextPosition;
-
-    // function prototypes ////////////////////////////////////////////////////////////////////////
+    
+     /* ============================================================================
+    * Member Function Declaration
+    * ============================================================================
+    */
     Blob(std::vector<cv::Point> _contour);
     void predictNextPosition(void);
 
 };
-
+}
 #endif    // MY_BLOB
+
 
