@@ -148,7 +148,7 @@ git clone https://github.com/zoumson/OpencvInstall.git     \
 
 2. Run the executable 
  ```sh
-   ./bin/demo 
+   ./bin/demo -v=./resource/video/CarsDrivingUnderBridge.mp4
 ```
 
 6. Back to the initial file structure configuration
